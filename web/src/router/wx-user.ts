@@ -7,13 +7,13 @@ export function setupWxUserInfo(router: Router) {
         if (!wxUserAuthStore.data) {
             try {
                 const data = await wxUserAuthStore.getWxUser()
-                console.log(data)
+                // console.log(data)
                 if (!data)
                     wxUserAuthStore.removeWxToken()
                 if (to.path === '/500')
                     next({ name: 'Root' })
                 else
-                console.log(wxUserAuthStore.wx_token)
+                // console.log(wxUserAuthStore.wx_token)
                     next()
             }
             catch (error) {
