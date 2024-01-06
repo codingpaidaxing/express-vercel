@@ -93,7 +93,6 @@ var app = express2();
 var router2 = express2.Router();
 var port = 3002;
 app.use("/users", users_default);
-app.use("/chat", users_default);
 app.get("/", (req, res) => {
   res.send("Hello, TypeScript Express!");
 });
