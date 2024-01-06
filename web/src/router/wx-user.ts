@@ -4,7 +4,7 @@ import { wxUseAuthStoreWithout } from '@/store/modules/auth/wx-user'
 export function setupWxUserInfo(router: Router) {
     router.beforeEach(async (to, from, next) => {
         const wxUserAuthStore = wxUseAuthStoreWithout()
-        if (!wxUserAuthStore.data) {
+        if (!wxUserAuthStore.data?.wx_token) {
             try {
                 const data = await wxUserAuthStore.getWxUser()
                 // console.log(data)
