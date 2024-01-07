@@ -43,6 +43,8 @@ async function getWxUser(code) {
   const result = await userAccessTokenByCode(code);
   const access_token = result.data.access_token;
   const openid = result.data.openid;
+  console.log("access_token", access_token);
+  console.log("openid", openid);
   const userInfoData = await userInfoByAccessTokenAndOpenId(access_token, openid);
   console.log("userInfo:", userInfoData.data);
   return userInfoData;
