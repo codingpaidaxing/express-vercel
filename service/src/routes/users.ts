@@ -13,7 +13,7 @@ router.post('/wx-user', async function (req, res, next) {
   // 1. 获取当前页面 URL中的code
   const code: string = req.query.code as string;
   console.log('code:', code);
-  const user_info = this.getWxUser(code);
+  const user_info = await this.getWxUser(code);
   console.log("============H5个人信息接口================")
   res.send({ status: 'Success', message: '', data: { wx_token: "token_paidaxing", user_info: user_info } })
 });
