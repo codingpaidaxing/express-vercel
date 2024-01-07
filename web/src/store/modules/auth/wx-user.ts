@@ -24,9 +24,9 @@ export const wxUserAuthStore = defineStore('wx-auth-store', {
         data: null
     }),
     actions: {
-        async getWxUser() {
+        async getWxUser(queryParams:string) {
             try {
-                const { data } = await fetchWxUser<WechatResponse>()
+                const { data } = await fetchWxUser<WechatResponse>(queryParams)
                 this.data = { ...data }
                 // 设置token
                 setWxToken(this.data.wx_token)
