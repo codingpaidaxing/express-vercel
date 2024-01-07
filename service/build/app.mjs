@@ -35,10 +35,18 @@ var { appid, secret } = config_default;
 router.post("/wx-user", async function(req, res, next) {
   const code = req.query.code;
   console.log("code:", code);
-  const user_info = await this.getWxUser(code);
+  const user_info = await getWxUser(code);
   console.log("============H5\u4E2A\u4EBA\u4FE1\u606F\u63A5\u53E3================");
   res.send({ status: "Success", message: "", data: { wx_token: "token_paidaxing", user_info } });
 });
+async function getWxUser(code) {
+  const result = await userAccessTokenByCode(code);
+  const access_token = result.data.access_token;
+  const openid = result.data.openid;
+  const userInfoData = await userInfoByAccessTokenAndOpenId(access_token, openid);
+  console.log("userInfo:", userInfoData.data);
+  return userInfoData;
+}
 router.get("/", async function(req, res, next) {
   const code = req.query.code;
   const result = await userAccessTokenByCode(code);
