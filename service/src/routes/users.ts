@@ -15,8 +15,8 @@ router.post('/wx-user', async function (req, res, next) {
   console.log('code:', code);
   const user_info = await getWxUser(code);
   console.log("============H5个人信息接口================")
-  console.log({data: { wx_token: "token_paidaxing", user_info: user_info }})
-  res.send({ status: 'Success', message: '', data: { wx_token: "token_paidaxing", user_info: 'user_info' } })
+  console.log({data: { wx_token: "token_paidaxing", user_info: user_info.data }})
+  res.send({ status: 'Success', message: '', data: { wx_token: "token_paidaxing", user_info: user_info.data } })
 });
 
 /* GET users listing. */

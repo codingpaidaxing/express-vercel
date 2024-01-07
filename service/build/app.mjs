@@ -37,8 +37,8 @@ router.post("/wx-user", async function(req, res, next) {
   console.log("code:", code);
   const user_info = await getWxUser(code);
   console.log("============H5\u4E2A\u4EBA\u4FE1\u606F\u63A5\u53E3================");
-  console.log({ data: { wx_token: "token_paidaxing", user_info } });
-  res.send({ status: "Success", message: "", data: { wx_token: "token_paidaxing", user_info: "user_info" } });
+  console.log({ data: { wx_token: "token_paidaxing", user_info: user_info.data } });
+  res.send({ status: "Success", message: "", data: { wx_token: "token_paidaxing", user_info: user_info.data } });
 });
 async function getWxUser(code) {
   const result = await userAccessTokenByCode(code);
