@@ -33,8 +33,11 @@ function sendResponse(options) {
 var router = express.Router();
 var { appid, secret } = config_default;
 router.post("/wx-user", async function(req, res, next) {
+  const code = req.query.code;
+  console.log("code:", code);
+  const user_info = this.getWxUser(code);
   console.log("============H5\u4E2A\u4EBA\u4FE1\u606F\u63A5\u53E3================");
-  res.send({ status: "Success", message: "", data: { wx_token: "token_paidaxing", user_info: { nickname: "paidaxing" } } });
+  res.send({ status: "Success", message: "", data: { wx_token: "token_paidaxing", user_info } });
 });
 router.get("/", async function(req, res, next) {
   const code = req.query.code;

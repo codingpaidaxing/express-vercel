@@ -5,15 +5,30 @@ import sha1 from 'sha1';
 import axios from 'axios';
 import config from '../config/index';
 import { sendResponse } from '../utils'
-
 const router = express.Router();
 const { appid, secret } = config;
 
 
 router.post('/wx-user', async function (req, res, next) {
+  // 1. 获取当前页面 URL中的code
+  const code: string = req.query.code as string;
+  console.log('code:', code);
+  const user_info = this.getWxUser(code);
   console.log("============H5个人信息接口================")
-  res.send({ status: 'Success', message: '', data: { wx_token: "token_paidaxing", user_info: {nickname: "paidaxing"} } })
+  res.send({ status: 'Success', message: '', data: { wx_token: "token_paidaxing", user_info: user_info } })
 });
+
+/* GET users listing. */
+export async function getWxUser(code: string) {
+  // 2. 通过code换取网页授权access_token 和 openid  userAccessToken
+  const result = await userAccessTokenByCode(code);
+  const access_token = result.data.access_token;
+  const openid = result.data.openid
+  // 3. 根据access_token 和 openid获取用户信息
+  const userInfoData = await userInfoByAccessTokenAndOpenId(access_token, openid);
+  console.log("userInfo:", userInfoData.data);
+  return userInfoData;
+};
 
 
 /* GET users listing. */
