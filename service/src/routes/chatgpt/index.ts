@@ -12,6 +12,9 @@ const router = express.Router()
 router.post('/chat-process', [auth, limiter], async (req, res) => {
   // res.setHeader('Content-type', 'application/octet-stream')
   res.setHeader('Content-type', 'text/event-stream')
+  // 在服务器端的响应头中设置 Cache-Control: no-cache 来确保不进行缓存。 确保浏览器和服务器没有对 SSE 请求进行缓存
+  res.setHeader('Cache-Control', 'no-cache');
+
 
   try {
     const { prompt, options = {}, systemMessage, temperature, top_p } = req.body as RequestProps

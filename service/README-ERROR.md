@@ -82,3 +82,8 @@ router.post('/chat-process', [auth, limiter], async (req, res) => {
 
 // 文件中正确使用了 express.json() 中间件来解析请求体 不配置这个可能会无法获取 req.body
 // app.use(express.json());
+
+
+
+ // 在服务器端的响应头中设置 Cache-Control: no-cache 来确保不进行缓存。 确保浏览器和服务器没有对 SSE 请求进行缓存
+  res.setHeader('Cache-Control', 'no-cache');

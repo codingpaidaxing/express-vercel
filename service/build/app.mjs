@@ -263,6 +263,7 @@ var limiter = rateLimit({
 var router2 = express2.Router();
 router2.post("/chat-process", [auth, limiter], async (req, res) => {
   res.setHeader("Content-type", "text/event-stream");
+  res.setHeader("Cache-Control", "no-cache");
   try {
     const { prompt, options = {}, systemMessage, temperature, top_p } = req.body;
     let firstChunk = true;
