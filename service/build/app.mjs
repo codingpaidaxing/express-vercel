@@ -262,7 +262,7 @@ var limiter = rateLimit({
 // src/routes/chatgpt/index.ts
 var router2 = express2.Router();
 router2.post("/chat-process", [auth, limiter], async (req, res) => {
-  res.setHeader("Content-type", "application/octet-stream");
+  res.setHeader("Content-type", "text/event-stream");
   try {
     const { prompt, options = {}, systemMessage, temperature, top_p } = req.body;
     let firstChunk = true;
