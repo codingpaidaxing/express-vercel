@@ -7,7 +7,7 @@ import chatRouter from './routes/chatgpt/index';
 
 const app = express();
 // 文件中正确使用了 express.json() 中间件来解析请求体 不配置这个可能会无法获取 req.body
-// app.use(express.json());
+app.use(express.json());
 const router = express.Router()
 
 const port = 3003;

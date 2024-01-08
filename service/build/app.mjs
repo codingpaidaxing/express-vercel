@@ -289,6 +289,7 @@ var chatgpt_default = router2;
 
 // src/app.ts
 var app = express3();
+app.use(express3.json());
 var router3 = express3.Router();
 var port = 3003;
 app.use("/users", users_default);
