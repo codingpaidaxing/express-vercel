@@ -279,6 +279,7 @@ ${JSON.stringify(chat)}`);
       top_p
     });
   } catch (error) {
+    console.log("error:", error);
     res.write(JSON.stringify(error));
   } finally {
     res.end();
