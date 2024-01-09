@@ -93,6 +93,8 @@ router.post('/chat-process', [auth, limiter], async (req, res) => {
 ## 关于tsup静态文件的访问配置
 参考官方文档：https://tsup.egoist.dev/#javascript-api
 
+![Alt text](image.png)
+
 修改`package.json`脚本中的命令
 主要是添加一个 `--publicDir`
 
