@@ -31,8 +31,6 @@ RUN pnpm install --production && rm -rf /root/.npm /root/.pnpm-store /usr/local/
 
 COPY ./ /app
 
-COPY --from=frontend /app/dist /app/public
-
 COPY --from=backend /app/build /app/build
 
 EXPOSE 3002
