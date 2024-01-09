@@ -292,7 +292,7 @@ var chatgpt_default = router2;
 // src/app.ts
 import path2 from "path";
 var app = express3();
-app.use(express3.static(path2.join(__dirname, "public")));
+app.use(express3.static(path2.join(__dirname, "../public")));
 app.use(express3.json());
 var router3 = express3.Router();
 var port = 3003;

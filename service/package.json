@@ -17,7 +17,7 @@
     "start": "esno ./src/app.ts",
     "dev": "esno watch ./src/app.ts",
     "prod": "node ./build/app.mjs",
-    "build": "pnpm clean && tsup",
+    "build": "pnpm clean && tsup --publicDir",
     "clean": "rimraf build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
