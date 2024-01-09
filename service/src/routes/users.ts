@@ -11,6 +11,10 @@ const router = express.Router();
 const appid = process.env.WX_APPID
 const secret = process.env.WX_SECRET
 
+// 为了解决DEPTH_ZERO_SELF_SIGNED_CERT 是 Node.js 中一个与 SSL 证书相关的错误。这个错误通常出现在尝试访问使用自签名证书（self-signed certificate）的 HTTPS 网站时。
+
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 router.post('/wx-user', async function (req, res, next) {
   // 1. 获取当前页面 URL中的code
   const code: string = req.query.code as string;
