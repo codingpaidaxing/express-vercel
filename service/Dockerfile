@@ -12,8 +12,7 @@ COPY /pnpm-lock.yaml /app
 
 RUN pnpm install
 
-COPY /app /app
-
+COPY ./ /app
 
 RUN pnpm build
 
@@ -30,9 +29,9 @@ COPY /pnpm-lock.yaml /app
 
 RUN pnpm install --production && rm -rf /root/.npm /root/.pnpm-store /usr/local/share/.cache /tmp/*
 
-COPY /app /app
+COPY ./ /app
 
-
+COPY --from=frontend /app/dist /app/public
 
 COPY --from=backend /app/build /app/build
 
