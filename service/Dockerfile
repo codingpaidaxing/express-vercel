@@ -12,7 +12,8 @@ COPY /pnpm-lock.yaml /app
 
 RUN pnpm install
 
-COPY /app
+COPY /app /app
+
 
 RUN pnpm build
 
