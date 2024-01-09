@@ -3,7 +3,7 @@
       {
         
         "src": "^/api/(.*)",
-        "dest": "https://service.ibitly.cn/$1",
+        "dest": "https://beta.ibitly.cn/$1",
         "status": 200
       }
     ]
