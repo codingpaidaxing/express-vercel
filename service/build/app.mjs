@@ -1,3 +1,10 @@
+// node_modules/.pnpm/registry.npmmirror.com+tsup@6.6.3_typescript@4.9.5/node_modules/tsup/assets/esm_shims.js
+import { fileURLToPath } from "url";
+import path from "path";
+var getFilename = () => fileURLToPath(import.meta.url);
+var getDirname = () => path.dirname(getFilename());
+var __dirname = /* @__PURE__ */ getDirname();
+
 // src/app.ts
 import express3 from "express";
 
@@ -283,7 +290,9 @@ ${JSON.stringify(chat)}`);
 var chatgpt_default = router2;
 
 // src/app.ts
+import path2 from "path";
 var app = express3();
+app.use(express3.static(path2.join(__dirname, "public")));
 app.use(express3.json());
 var router3 = express3.Router();
 var port = 3003;

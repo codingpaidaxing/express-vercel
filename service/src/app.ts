@@ -6,6 +6,7 @@ import chatRouter from './routes/chatgpt/index';
 import path from 'path';
 
 const app = express();
+// 设置静态文件目录
 app.use(express.static(path.join(__dirname, 'public')));
 // 文件中正确使用了 express.json() 中间件来解析请求体 不配置这个可能会无法获取 req.body
 app.use(express.json());
