@@ -87,3 +87,19 @@ router.post('/chat-process', [auth, limiter], async (req, res) => {
 
  // 在服务器端的响应头中设置 Cache-Control: no-cache 来确保不进行缓存。 确保浏览器和服务器没有对 SSE 请求进行缓存
   res.setHeader('Cache-Control', 'no-cache');
+
+
+
+## 关于tsup静态文件的访问配置
+参考官方文档：https://tsup.egoist.dev/#javascript-api
+
+修改`package.json`脚本中的命令
+主要是添加一个 `--publicDir`
+
+```
+# 由 
+"build": "pnpm clean && tsup",
+# 变成
+"build": "pnpm clean && tsup --publicDir",
+```
+
