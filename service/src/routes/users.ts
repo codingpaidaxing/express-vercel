@@ -6,8 +6,10 @@ import axios from 'axios';
 import config from '../config/index';
 import { sendResponse } from '../utils'
 const router = express.Router();
-const { appid, secret } = config;
+// const { appid, secret } = config;
 
+const appid = process.env.WX_APPID
+const secret = process.env.WX_SECRET
 
 router.post('/wx-user', async function (req, res, next) {
   // 1. 获取当前页面 URL中的code

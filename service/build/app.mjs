@@ -6,13 +6,6 @@ import express from "express";
 import sha1 from "sha1";
 import axios from "axios";
 
-// src/config/index.ts
-var config = {
-  appid: "wx6361298f0e180aa1",
-  secret: "741d6da7a14325fa0f49bb07fc8ae41b"
-};
-var config_default = config;
-
 // src/utils/index.ts
 function sendResponse(options) {
   if (options.type === "Success") {
@@ -31,7 +24,8 @@ function sendResponse(options) {
 
 // src/routes/users.ts
 var router = express.Router();
-var { appid, secret } = config_default;
+var appid = process.env.WX_APPID;
+var secret = process.env.WX_SECRET;
 router.post("/wx-user", async function(req, res, next) {
   const code = req.query.code;
   console.log("code:", code);
